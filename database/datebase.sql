@@ -38,4 +38,4 @@ CREATE TABLE tenant_contract (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-delete from property where id = 19;
+delete from property where id = 18;

@@ -38,4 +38,8 @@ if st.button("submit"):
     )
     conn.commit()
     conn.close()
+    
     st.success("Property added successfully!")
+
+if not all([name, area, type, adress, price, Number_of_rooms]):
+    st.error("Please fill in all required fields.")
