@@ -11,6 +11,8 @@ DEFAULT_IMAGE = ROOT_DIR / "download.jpg"
 st.set_page_config(page_title="EmlakHub - Home", page_icon="🏠", layout="wide")
 
 
+
+
 def get_property_value(row, *keys, default="Not specified"):
     for key in keys:
         value = row.get(key)
@@ -46,6 +48,7 @@ def get_properties():
 
 st.title("Gallery")
 st.write("---")
+st.text_input("Search properties...", key="search_query", placeholder="Enter property name or address")
 
 properties = get_properties()
 
