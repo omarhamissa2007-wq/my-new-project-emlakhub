@@ -97,7 +97,7 @@ else:
             st.write(f"Rooms: {get_value(property_data, 'number_of_rooms', 'Number_of_rooms')}")
             st.write(f"Area: {get_value(property_data, 'area')}")
 
-        st.divider()
+     
 
         col1, col2 = st.columns(2)
 
