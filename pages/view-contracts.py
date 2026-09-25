@@ -4,9 +4,9 @@ import sqlite3
 
 
 
-st.set_page_config(page_title="View users", layout="wide")
+st.set_page_config(page_title="View contracts", layout="wide")
 
-st.title("View users")
+st.title("View contract")
 
 conn = sqlite3.connect("database/datebase.db")
 cursor=conn.cursor()

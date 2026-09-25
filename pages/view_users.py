@@ -6,7 +6,7 @@ import sqlite3
 
 st.set_page_config(page_title="View users", layout="wide")
 
-st.title("View users")
+st.title("view users")
 
 conn = sqlite3.connect("database/datebase.db")
 cursor=conn.cursor()

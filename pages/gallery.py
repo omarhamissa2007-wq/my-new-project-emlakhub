@@ -8,7 +8,6 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT_DIR / "database" / "datebase.db"
 DEFAULT_IMAGE = ROOT_DIR / "download.jpg"
 
-st.set_page_config(page_title="EmlakHub - Home", page_icon="🏠", layout="wide")
 
 
 
