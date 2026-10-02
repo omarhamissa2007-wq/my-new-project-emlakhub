@@ -35,7 +35,7 @@ def delete_property(property_id):
 properties = get_properties()
 
 if not properties:
-    st.warning("There are no properties available to delete right now.")
+    st.warning("There are no properties available to delete at the moment.")
     st.stop()
 
 property_options = {
@@ -49,20 +49,20 @@ selected_property = next(item for item in properties if item.get("id") == select
 
 st.subheader("Selected Property Information")
 st.write(f"ID: {selected_property.get('id')}")
-st.write(f"Name: {selected_property.get('name')}")
-st.write(f"Price: {selected_property.get('price')}")
-st.write(f"Property Address: {selected_property.get('address') or selected_property.get('adress') or 'Not specified'}")
+st.write(f"Name: {selected_property.get('name', 'Not specified')}")
+st.write(f"Price: {selected_property.get('price', 'Not specified')}")
+st.write(f"Address: {selected_property.get('address', selected_property.get('adress', 'Not specified'))}")
 st.write(f"Type: {selected_property.get('type', 'Not specified')}")
 
-st.warning("⚠️ Warning: deleting this property will permanently remove it from the database, and this action cannot be undone.")
+st.warning("⚠️ Warning: Deleting this property will permanently remove it from the database, and this action cannot be undone.")
 
 if st.button("Delete property from database", type="primary", use_container_width=True):
     deleted_rows = delete_property(selected_id)
     if deleted_rows > 0:
-        st.success(f"Property #{selected_id} was deleted successfully from the database.")
+        st.success(f"The property with ID {selected_id} was deleted successfully from the database.")
         st.rerun()
     else:
-        st.error("Failed to delete the property. The ID may not exist or there may be a problem with the database.")
+        st.error("Failed to delete the property. The ID may not exist or there may be an issue with the database.")
 
-if st.button("Back to Gallery", use_container_width=True):
+if st.button("Back to gallery", use_container_width=True):
     st.switch_page("pages/gallery.py")

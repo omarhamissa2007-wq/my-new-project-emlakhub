@@ -97,7 +97,26 @@ else:
             st.write(f"Rooms: {get_value(property_data, 'number_of_rooms', 'Number_of_rooms')}")
             st.write(f"Area: {get_value(property_data, 'area')}")
 
-     
+            st.divider()
+            st.warning("⚠️ Delete this property permanently from the database.")
+            if st.button("🗑️ Delete Property", type="primary", use_container_width=True):
+                conn = sqlite3.connect(DB_PATH)
+                try:
+                    cursor = conn.cursor()
+                    cursor.execute("DELETE FROM property WHERE id = ?", (property_id,))
+                    conn.commit()
+                    if cursor.rowcount > 0:
+                        st.session_state.selected_property = None
+                        st.success(f"Property #{property_id} was deleted successfully.")
+                        st.rerun()
+                    else:
+                        st.error("Property was not found or could not be deleted.")
+                except Exception as e:
+                    st.error(f"Error deleting property: {str(e)}")
+                finally:
+                    conn.close()
+
+        st.divider()
 
         col1, col2 = st.columns(2)
 
