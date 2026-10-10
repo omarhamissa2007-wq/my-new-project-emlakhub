@@ -1,8 +1,6 @@
-﻿# Software Project Documentation | توثيق مشروع البرمجيات
+# Software Project Documentation | توثيق مشروع البرمجيات
 
-<div class="arabic">
-قالب توثيق مشاريع البرمجيات — للمسابقة الأفريقية الآسيوية للتكنولوجيا
-</div>
+
 
 ---
 
@@ -20,7 +18,7 @@
 
 | Category | Technology | Purpose |
 |----------|-----------|---------|
-| **Language** | Python | تطوير المنطق الأساسي للتطبيق |
+| **Language** | Python |بناء وجهه الموقع|
 | **Framework** | Streamlit | بناء واجهة المستخدم وقواعد الصفحات |
 | **Database** | SQLite | حفظ بيانات العقارات والمستخدمين والعقود |
 | **Libraries** | Streamlit, sqlite3, Pillow, pathlib, uuid4 | عرض العقارات تخزين البيانات تحميل الصور إدارة الملفات |
@@ -174,8 +172,7 @@ my-new-project-emlakhub/
 
 ### Screenshots | لقطات الشاشة
 
-<!-- Screenshot: Landing page -->
-**Landing Page**: صفحة معرض العقارات تعرض بطاقات بالعقارات المتاحة مع صورة اسم العقار السعر العنوان وغرف العقار.
+<!-- Screenshot: Landing page 
 
 <!-- Screenshot: Main dashboard -->
 **Dashboard**: صفحة تفاصيل العقار تعرض بيانات العقار بشكل منظم مع صورة كبيرة ووصف مختصر وسهولة الوصول إلى زر العقود.
@@ -183,15 +180,7 @@ my-new-project-emlakhub/
 <!-- Screenshot: Key feature screen -->
 **Key Feature**: صفحة إضافة العقار تسمح بإدخال اسم العقار المساحة نوع العقار العنوان السعر عدد الغرف ثم رفع صورة العقار.
 
-### Design System | نظام التصميم
 
-| Element | Style |
-|---------|-------|
-| **Primary Color** | #0F172A (dark slate blue) |
-| **Secondary Color** | #16A34A (green) |
-| **Font** | Segoe UI, Arial, Cairo |
-| **Button Style** | Rounded buttons with strong contrast |
-| **Layout** | Card-based layout using Streamlit panels |
 
 ### Responsive Design | التصميم المتجاوب
 
@@ -226,11 +215,7 @@ my-new-project-emlakhub/
 | users | id, name, email, password, dob, phone, ssn, created_at | Stores registered users |
 | contracts / tenant_contract | id, name, phone, email, card_number, contract_type, property_id, property_type, property_price, property_address, created_at | Saves the generated contract information |
 
-### External APIs (if any) | واجهات برمجة التطبيقات
 
-| API | Purpose | Rate Limit |
-|-----|---------|------------|
-| None | All data is stored locally in the app | N/A |
 
 ---
 
@@ -253,7 +238,7 @@ By the end of this project, the student will be able to:
 ### Cultural / Historical Context | السياق الثقافي / التاريخي
 
 | Topic | Description |
-|-------|-------------|
+|-------|-------------|     
 | Real estate access | The project connects to the real-life need for easier property discovery and digital contract handling |
 | Digital transformation | It teaches how local services can be improved through simple online systems |
 
@@ -281,7 +266,7 @@ By the end of this project, the student will be able to:
 
 - **Primary**: Buyers, renters, and property seekers looking for housing options online
 - **Secondary**: Property owners and landlords who want to list their properties
-- **Tertiary**: Real-estate agents and students exploring digital property management tools
+- **Tertiary**: Real-estate agents and students explorin8g digital property management tools
 
 ### Platforms | المنصات
 
@@ -303,7 +288,7 @@ By the end of this project, the student will be able to:
 > **Instructions**: Copy this section into your own document and fill it in for YOUR project.
 
 ---
-
+ 
 ### My Project Information | معلومات مشروعي
 
 **Student Name**: omar hossam hamissa
@@ -350,6 +335,44 @@ By the end of this project, the student will be able to:
 | Property Details | Views the full property description and options | By selecting a card |
 | Contract | Downloads and uploads the property contract | From property details |
 
+### Add property page 
+![alt text](screenshots/add_property.JPG)
+
+
+### Delete property page 
+
+![alt text](screenshots/delete_property.JPG)
+
+
+### login page
+![alt text](screenshots/login.JPG)
+
+
+### Contract page
+![alt text](screenshots/contract.JPG)
+
+
+### Register page
+![alt text](screenshots/register.JPG)
+
+
+
+### View contract
+![alt text](screenshots/view.contracts.JPG)
+
+
+
+### Property_datalis
+![alt text](screenshots/property.datiles.JPG)
+
+
+
+### gellery_page
+![alt text](screenshots/gellery.page.JPG)
+
+
+### View user
+![alt text](<screenshots/view user.JPG>)
 ---
 
 ### My Features | ميزات مشروعي
@@ -382,9 +405,7 @@ By the end of this project, the student will be able to:
 
 2. The most fun part of building my project was: designing the property gallery and adding the property details experience.
 
-3. If I had more time, I would add: email and WhatsApp notifications, better user sessions, and a stronger admin dashboard.
-
-4. One thing I would do differently: I would organize the project into a cleaner modular structure with shared functions and better validation.
+3. One thing I would do differently: I would organize the project into a cleaner modular structure with shared functions and better validation.
 
 ---
 

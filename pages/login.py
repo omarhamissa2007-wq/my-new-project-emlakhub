@@ -50,6 +50,8 @@ if st.button("submit"):
 
     conn.close()
 
+
+
     if user:
         st.success("logged in successfully")
         st.switch_page("pages/gallery.py")
