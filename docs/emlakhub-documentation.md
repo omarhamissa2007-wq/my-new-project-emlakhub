@@ -72,7 +72,7 @@ emlakhub/
 │   └── contract_service.py      # save, approve and reject contracts
 ├── database/
 │   ├── schema.sql               # The 4 tables
-│   ├── seed.sql                 # The 50 starter listings and their photos
+│   ├── seed.sql                 # The 51 starter listings and their photos
 │   └── emlakhub.db              # The SQLite database the app uses
 ├── assets/documents/            # ownership_contract.pdf, tenant_contract.pdf
 ├── data/uploads/                # Listing photos
@@ -87,7 +87,7 @@ emlakhub/
 ```text
 User's browser
     -> app.py (runs before every page)
-        -> create_tables(): makes the 4 tables, adds the 50 starter listings if the gallery is empty
+        -> create_tables(): makes the 4 tables, adds the 51 starter listings if the gallery is empty
         -> reads st.session_state.user and builds the menu with st.navigation
         -> runs the chosen screen in app_pages/
             -> the screen calls a function in services/
@@ -213,7 +213,7 @@ Try the app: <https://my-new-project-emlakapp.streamlit.app/>
 | Sign-up form | User input | Name, email, phone, national ID and password go into `users`. |
 | Contract form | User input | Name, phone, email and card number go into `contracts`. The signed PDF goes into `data/contracts/`. |
 | Admin forms | User input | New and edited listings, and their photos in `data/uploads/`. |
-| `database/seed.sql` | Starter data | 50 listings for sale (26 apartments, 24 villas) in 7 areas around Cairo: Sheikh Zayed, Al Rehab City, Madinaty, El Shorouk, Fifth Settlement, Nasr City and 6th of October. Prices go from 5,500,000 to 85,000,000 EGP. Each listing has one photo. |
+| `database/seed.sql` | Starter data | 51 listings for sale (27 apartments, 24 villas) in 7 areas around Cairo: Sheikh Zayed, Al Rehab City, Madinaty, El Shorouk, Fifth Settlement, Nasr City and 6th of October. Prices go from 3,200,000 to 85,000,000 EGP. Each listing has one photo. |
 | `assets/documents/` | Files | The blank ownership and tenant contracts people download. |
 
 ### Database Schema | قاعدة البيانات
@@ -324,10 +324,9 @@ Through building this project, a student can practice:
 
 ### What I Learned | ماذا تعلمت
 
-1. **The hardest part:** connecting the pages together and making the property flow work consistently.
+1. **The hardest part:** competing with the other real estate websites.
 2. **The most fun part:** designing the property gallery and adding the property details experience.
-3. **If I had more time:** email and WhatsApp notifications, better user sessions, and a stronger admin dashboard.
-4. **One thing I would do differently:** I would organize the project into a cleaner modular structure with shared functions and better validation.
+3. **One thing I would do differently:** I would organize the project into a cleaner modular structure with shared functions and better validation.
 
 ### Screenshot of My Project | لقطة من مشروعي
 

@@ -1,4 +1,4 @@
--- The 50 starter listings and their photos. app.py adds these when the property table is empty.
+-- The 51 starter listings and their photos. app.py adds these when the property table is empty.
 -- They are all for sale. The description is left empty until the admin writes one.
 
 INSERT INTO property (id, title, offer, type, area, address, price, rooms) VALUES (1, '3-room apartment in Fifth Settlement', 'sale', 'apartment', 165, 'Fifth Settlement, Cairo, New Cairo', 8300000, 3);
@@ -51,6 +51,7 @@ INSERT INTO property (id, title, offer, type, area, address, price, rooms) VALUE
 INSERT INTO property (id, title, offer, type, area, address, price, rooms) VALUES (48, '4-room villa in Al Rehab City', 'sale', 'villa', 218, 'Al Rehab City, New Cairo', 39000000, 4);
 INSERT INTO property (id, title, offer, type, area, address, price, rooms) VALUES (49, '4-room villa in Al Rehab City', 'sale', 'villa', 491, 'Al-Raheb, New cairo', 38000000, 4);
 INSERT INTO property (id, title, offer, type, area, address, price, rooms) VALUES (50, '3-room apartment in Nasr City', 'sale', 'apartment', 225, 'al nasr city', 85000000, 3);
+INSERT INTO property (id, title, offer, type, area, address, price, rooms) VALUES (51, '3-room apartment in Nasr City', 'sale', 'apartment', 150, 'al nasr city/mostafa el-nahas street', 3200000, 3);
 
 INSERT INTO photos (property_id, path) VALUES (1, 'data/uploads/property_67c4cea07a094ac6b70f582225fd7de3.webp');
 INSERT INTO photos (property_id, path) VALUES (2, 'data/uploads/property_df9712720de147f9b876dfaa9975ea98.webp');
@@ -102,3 +103,4 @@ INSERT INTO photos (property_id, path) VALUES (47, 'data/uploads/property_d5726e
 INSERT INTO photos (property_id, path) VALUES (48, 'data/uploads/property_79b0b56964994233adf54fe869f767dd.webp');
 INSERT INTO photos (property_id, path) VALUES (49, 'data/uploads/property_a29458365acd4494ac612263b80f94e1.webp');
 INSERT INTO photos (property_id, path) VALUES (50, 'data/uploads/property_0117ca0478e24850a9e721114d3164d7.webp');
+INSERT INTO photos (property_id, path) VALUES (51, 'data/uploads/property_59483cf57a8545d5bb96d72fd3bc8ef1.webp');

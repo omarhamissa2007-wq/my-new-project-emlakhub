@@ -14,10 +14,10 @@ The very first person who signs up becomes the admin. Everyone after that is a n
 
 ## How it works
 
-- `app.py` runs first every time. It makes the database tables (and adds the 50 starter listings if the gallery is empty), then builds the menu for whoever is logged in. Pages that aren't in your menu can't be opened.
+- `app.py` runs first every time. It makes the database tables (and adds the 51 starter listings if the gallery is empty), then builds the menu for whoever is logged in. Pages that aren't in your menu can't be opened.
 - `app_pages/` holds the screens. Each one is a plain script that runs top to bottom.
 - `services/` holds every function, one file per topic. `database.py` opens the database and makes the tables. `user_service.py`, `property_service.py` and `contract_service.py` each do one job, like adding a user or saving a contract.
-- `database/schema.sql` describes the four tables (`users`, `property`, `photos`, `contracts`). `database/seed.sql` holds the 50 starter listings (all for sale) and their photos.
+- `database/schema.sql` describes the four tables (`users`, `property`, `photos`, `contracts`). `database/seed.sql` holds the 51 starter listings (all for sale) and their photos.
 - Each listing is either **for sale** (the price is the total) or **for rent** (the price is per month). Each one has 1 to 5 photos, and the first one is the cover.
 - Property photos are saved in `data/uploads/`. Signed contracts are saved in `data/contracts/` as `contract_<number>.pdf`. The blank contracts people download are in `assets/documents/`.
 
@@ -45,7 +45,7 @@ streamlit run app.py
 
 Run it from this folder, because the database and photo paths are relative. Then open http://localhost:8501.
 
-To start over with an empty database, delete `database/emlakhub.db` and run the app again. It makes fresh tables and adds the 50 starter listings. The next person to sign up becomes the admin.
+To start over with an empty database, delete `database/emlakhub.db` and run the app again. It makes fresh tables and adds the 51 starter listings. The next person to sign up becomes the admin.
 
 ## Deploy it
 
@@ -71,6 +71,6 @@ These were chosen on purpose to keep the code simple. Read them before "fixing" 
 - **Uploads are capped at 5 MB** (photos and PDFs) instead of being resized.
 - **Deleting a property is permanent.** Its photos are deleted too (for a starter listing that also removes a committed file from `data/uploads/`). Contracts for it stay, but show "(deleted property)".
 - **Search is a simple "contains" match** on the title and address. The max-price filter only shows up after you pick sale or rent, because a total price and a monthly rent can't be compared.
-- **The 50 starter listings have no description.** Their titles were made from their rooms, type and area. Editing one means writing a description, because it's required.
+- **The 51 starter listings have no description.** Their titles were made from their rooms, type and area. Editing one means writing a description, because it's required.
 - **No `try`/`except`.** If a file is missing or the disk is full, Streamlit shows its own error box.
 - **Log in, Sign up, Add property and Edit property use a form** (`st.form`). In Streamlit 1.64, pressing Tab out of a password box and then clicking the button loses the password. A form sends every box at once, so this can't happen.
