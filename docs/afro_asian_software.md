@@ -401,8 +401,7 @@ By the end of this project, the student will be able to:
 
 ### What I Learned | ما تعلمته
 
-1. The hardest part of building my project was: connecting the pages together and making the property flow work consistently.
-
+1. The hardest part of building my project was: challange  another the real elstate website
 2. The most fun part of building my project was: designing the property gallery and adding the property details experience.
 
 3. One thing I would do differently: I would organize the project into a cleaner modular structure with shared functions and better validation.
@@ -413,15 +412,11 @@ By the end of this project, the student will be able to:
 
 <!-- Paste a screenshot of your project running here -->
 
----
 
-**Instructor Notes** | ملاحظات المدرس:
-
-This project demonstrates an end-to-end real estate web app built with Python and Streamlit. It combines simple UI design, database storage, and file management in a practical and accessible solution.
-
----
 
 <div class="session-footer">
   <p>Techno Kids, Techno Future — Software Documentation Template</p>
   <p>Afro-Asian Tech Forum · Software Category · 2026</p>
 </div>
+
+
