@@ -1,0 +1,41 @@
+/* EmlakHub brand: colours and fonts shared by the poster, slides, diagrams and documentation.
+   Taken from the project logo (logo.png in the repo root): deep navy with metallic gold, in Roman capitals.
+   Diagrams also use these hex values directly in SVG attributes, so change them in docs/diagrams/*.html too:
+   #061730 ink (navy) · #C29A55 accent (gold) · #8E6C34 accent-dark · #BE9E63 warm · #F7E6A6 warm-2 (light gold) · #F6F3EC paper (ivory) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap');
+
+:root {
+  --ink: #061730;        /* the logo's navy: text and the dark hero */
+  --ink-2: #0F2443;
+  --ink-soft: #3A4A63;
+  --accent: #C29A55;     /* the logo's gold */
+  --accent-dark: #8E6C34;
+  --warm: #BE9E63;       /* darker gold */
+  --warm-2: #F7E6A6;
+  --paper: #F6F3EC;      /* ivory page */
+  --white: #FFFFFF;
+  --line: rgba(6, 23, 48, 0.14);
+  --todo-bg: #FFF1A8;    /* student placeholder highlight */
+  --todo-line: #D9A400;
+
+  --display: 'Cinzel', Georgia, serif;   /* Roman capitals, like the logo's lettering */
+  --sans: 'Space Grotesk', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --arabic: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+.ar { font-family: var(--arabic); direction: rtl; unicode-bidi: isolate; }
+
+/* Student placeholder: anything in this style still has to be written before printing. */
+.todo {
+  background: var(--todo-bg);
+  color: #4A3B00;
+  border: 0.18em dashed var(--todo-line);
+  border-radius: 0.35em;
+  padding: 0.12em 0.4em;
+  font-style: normal;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.todo::before { content: "✏️ Student writes: "; font-weight: 700; }
+.todo.block { display: block; padding: 0.5em 0.7em; }

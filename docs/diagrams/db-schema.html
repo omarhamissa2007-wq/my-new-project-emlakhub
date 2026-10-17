@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Database Schema</title>
+<!-- Made by make_schema.py. Edit the look here; edit the layout with POSITIONS in make_schema.py. -->
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  html, body { margin: 0; background: var(--white); }
+  .canvas { position: relative; width: 1650px; height: 622px; font-family: var(--mono); color: var(--ink); }
+  svg { position: absolute; inset: 0; }
+  svg path { fill: none; stroke: var(--accent-dark); stroke-width: 2.5; }
+  .table { position: absolute; background: #fff; border: 2.5px solid var(--ink); border-radius: 12px; overflow: hidden; }
+  .head { height: 52px; box-sizing: border-box; padding: 0 18px; display: flex; align-items: center;
+          background: var(--ink); color: #fff; font: 700 21px var(--mono); }
+  .col { height: 30px; box-sizing: border-box; padding: 0 18px; display: flex; justify-content: space-between; align-items: center;
+         font-size: 16px; border-top: 1px solid rgba(6,23,48,0.07); }
+  .col em { font-style: normal; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--ink-soft); }
+  .col.pk span { font-weight: 700; }
+  .col.pk em { color: var(--warm); }
+  .col.fk span, .col.fk em { color: var(--accent-dark); font-weight: 700; }
+  .col.ts { color: var(--ink-soft); font-size: 13px; background: #F7F5EF; }
+  .legend { position: absolute; left: 40px; bottom: 40px; right: 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .legend div { background: #F7F5EF; border: 2px solid rgba(6,23,48,0.10); border-radius: 12px; padding: 14px 18px; }
+  .legend b { display: block; font-size: 13px; letter-spacing: 0.14em; color: var(--ink-soft); margin-bottom: 6px; }
+  .legend span { font-size: 16px; }
+  .key { position: absolute; left: 40px; bottom: 150px; font-size: 15px; color: var(--ink-soft); }
+  .key i { display: inline-block; width: 26px; height: 3px; background: var(--accent-dark); vertical-align: middle; margin-right: 8px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+<svg width="1650" height="622">
+  <defs>
+    <marker id="pk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8E6C34" stroke="none"/></marker>
+    <marker id="fk" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6"><circle cx="5" cy="5" r="4" fill="#fff" stroke="#8E6C34" stroke-width="2"/></marker>
+  </defs>
+<path d="M1270,137 C1230,137 1240,107 1200,107" marker-start="url(#fk)" marker-end="url(#pk)"/>
+<path d="M450,137 C410,137 420,107 380,107" marker-start="url(#fk)" marker-end="url(#pk)"/>
+<path d="M790,167 C830,167 820,107 860,107" marker-start="url(#fk)" marker-end="url(#pk)"/>
+</svg>
+<div class="table" style="left:40px;top:40px;width:340px"><div class="head">users</div><div class="col pk"><span>id</span><em>PK</em></div><div class="col "><span>name</span><em></em></div><div class="col "><span>email</span><em>UNIQUE</em></div><div class="col "><span>phone</span><em></em></div><div class="col "><span>ssn</span><em>UNIQUE</em></div><div class="col "><span>password</span><em></em></div><div class="col "><span>is_admin</span><em></em></div><div class="col ts"><span>created_at</span></div></div>
+<div class="table" style="left:860px;top:40px;width:340px"><div class="head">property</div><div class="col pk"><span>id</span><em>PK</em></div><div class="col "><span>title</span><em></em></div><div class="col "><span>description</span><em></em></div><div class="col "><span>offer</span><em></em></div><div class="col "><span>type</span><em></em></div><div class="col "><span>area</span><em></em></div><div class="col "><span>address</span><em></em></div><div class="col "><span>price</span><em></em></div><div class="col "><span>rooms</span><em></em></div><div class="col "><span>status</span><em></em></div><div class="col ts"><span>created_at</span></div></div>
+<div class="table" style="left:1270px;top:40px;width:340px"><div class="head">photos</div><div class="col pk"><span>id</span><em>PK</em></div><div class="col fk"><span>property_id</span><em>FK</em></div><div class="col "><span>path</span><em></em></div><div class="col ts"><span></span></div></div>
+<div class="table" style="left:450px;top:40px;width:340px"><div class="head">contracts</div><div class="col pk"><span>id</span><em>PK</em></div><div class="col fk"><span>user_id</span><em>FK</em></div><div class="col fk"><span>property_id</span><em>FK</em></div><div class="col "><span>contract_type</span><em></em></div><div class="col "><span>name</span><em></em></div><div class="col "><span>phone</span><em></em></div><div class="col "><span>email</span><em></em></div><div class="col "><span>card_number</span><em></em></div><div class="col "><span>signed_pdf</span><em></em></div><div class="col "><span>status</span><em></em></div><div class="col ts"><span>created_at</span></div></div>
+<div class="key"><i></i>each line goes from a foreign key (○) to the id it points at (▶)</div>
+<div class="legend">
+  <div><b>PROPERTY.OFFER</b><span>sale · rent</span></div>
+  <div><b>PROPERTY.STATUS</b><span>available · sold · rented</span></div>
+  <div><b>CONTRACTS.STATUS</b><span>pending · approved · rejected</span></div>
+  <div><b>CONTRACTS.CONTRACT_TYPE</b><span>ownership · tenant</span></div>
+</div>
+</div>
+</body>
+</html>

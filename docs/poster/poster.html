@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EmlakHub Poster</title>
+<!-- Printed size: 1000 x 2000 mm, plus 5 mm extra on each edge for trimming. Build the PDF with: python docs/build.py poster -->
+<!-- Yellow ✏️ boxes (the "todo" class in brand.css) are for the student to write. Replace a whole box with your words. -->
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  @page { size: 1010mm 2010mm; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--paper); }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: var(--sans); color: var(--ink); }
+  .poster { position: relative; width: 1010mm; height: 2010mm; overflow: hidden; background: var(--paper);
+            background-image:
+              linear-gradient(rgba(6,23,48,0.035) 0.6mm, transparent 0.6mm),
+              linear-gradient(90deg, rgba(6,23,48,0.035) 0.6mm, transparent 0.6mm);
+            background-size: 20mm 20mm; }
+
+  /* ---------- hero (read from far away) ---------- */
+  .hero { position: absolute; left: 0; top: 0; width: 1010mm; height: 455mm; background: var(--ink); overflow: hidden; }
+  .hero .texture { position: absolute; inset: 0; padding: 12mm 18mm; display: flex; flex-wrap: wrap; align-content: flex-start;
+                   justify-content: space-between; column-gap: 14mm; row-gap: 4mm; color: var(--accent); opacity: 0.10; }
+  .hero .texture span { font-size: 30mm; line-height: 1.4; }
+  .hero .texture .en { font-family: var(--display); }
+  .hero .texture .ar { font-family: var(--arabic); font-weight: 700; font-size: 32mm; }
+  .hero .glow { position: absolute; right: 40mm; top: 35mm; width: 380mm; height: 380mm; border-radius: 50%;
+                background: radial-gradient(circle, rgba(194,154,85,0.42) 0%, rgba(190,158,99,0.14) 52%, rgba(190,158,99,0) 72%); }
+  .hero .mark { position: absolute; left: 665mm; top: 75mm; width: 300mm; height: 300mm; padding: 14mm; background: var(--paper); border-radius: 46mm;
+               box-shadow: 0 0 0 4mm rgba(194,154,85,0.35); }
+  .hero .text { position: absolute; left: 60mm; top: 100mm; width: 580mm; }
+  .hero .kicker { font-family: var(--mono); font-weight: 700; font-size: 14mm; letter-spacing: 0.22em; color: var(--warm-2); text-transform: uppercase; }
+  .hero h1 { font-family: var(--display); font-weight: 700; font-size: 72mm; line-height: 1; color: var(--warm-2);
+             margin: 16mm 0 14mm -2mm; letter-spacing: -0.02em; white-space: nowrap; }
+  .hero h1 .dot { color: var(--accent); }
+  .hero .tagline { font-family: var(--display); font-size: 40mm; line-height: 1.05; color: var(--accent); }
+  .hero .promise { font-size: 19mm; line-height: 1.32; color: var(--paper); opacity: 0.94; margin-top: 14mm; max-width: 560mm; }
+  .hero .todo { font-family: var(--sans); font-size: 15mm; line-height: 1.45; font-weight: 500; }
+
+  /* a row of "pixels" between the dark top and the light body */
+  .band { position: absolute; left: 0; top: 455mm; width: 1010mm; height: 20mm;
+          background:
+            linear-gradient(90deg, var(--accent) 50%, var(--ink) 50%) 0 0 / 20mm 10mm repeat-x,
+            linear-gradient(90deg, var(--ink) 50%, var(--accent) 50%) 0 10mm / 20mm 10mm repeat-x; }
+
+  /* ---------- body (read up close) ---------- */
+  .body { position: absolute; left: 35mm; top: 510mm; width: 940mm; }
+  h2 { font-family: var(--sans); font-weight: 700; font-size: 40mm; line-height: 1.05; color: var(--ink); margin-bottom: 10mm; letter-spacing: -0.02em; }
+  h2 .num { font-family: var(--display); font-weight: 400; font-size: 13mm; color: var(--accent-dark); letter-spacing: 0.08em; margin-right: 8mm; vertical-align: 0.45em; }
+  h2 .ar { font-size: 16mm; font-weight: 600; color: var(--ink-soft); margin-left: 6mm; vertical-align: 0.3em; }
+  h2 .todo { font-size: 17mm; font-weight: 500; vertical-align: 0.35em; letter-spacing: 0; }
+  section { margin-bottom: 24mm; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20mm; }
+  .card { background: var(--white); border: 0.8mm solid var(--line); border-radius: 6mm; padding: 14mm 16mm; }
+  .card.hot { border: 1.2mm solid var(--accent); background: #F8F0DE; }
+  .card h3 { font-size: 17mm; font-weight: 700; margin-bottom: 6mm; }
+  .card p { font-size: 12.5mm; line-height: 1.4; color: var(--ink-soft); }
+  .label { font-family: var(--mono); font-weight: 700; font-size: 9mm; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: 4mm; }
+
+  .demo { display: grid; grid-template-columns: 560mm 1fr; gap: 18mm; align-items: start; }
+  .shot { border: 0.8mm solid rgba(6,23,48,0.25); border-radius: 5mm; overflow: hidden; background: #fff; }
+  .shot img { display: block; width: 100%; object-fit: cover; object-position: top left; }
+  .demo .shot img { height: 330mm; object-position: 22% top; }
+  .caption { font-size: 10mm; color: var(--ink-soft); margin-top: 5mm; line-height: 1.35; }
+  ul.features { list-style: none; display: grid; gap: 7.5mm; }
+  ul.features li { display: flex; gap: 6mm; align-items: flex-start; }
+  ul.features .dot { flex: none; width: 7mm; height: 7mm; margin-top: 3.5mm; background: var(--accent); }
+  ul.features strong { font-size: 13mm; font-weight: 700; display: block; }
+  ul.features span.d { font-size: 10.5mm; color: var(--ink-soft); line-height: 1.3; display: block; margin-top: 1mm; }
+  .thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14mm; margin-top: 14mm; }
+  .thumbs .shot img { height: 172mm; object-position: 30% top; }
+  .thumbs .caption { margin-top: 3mm; }
+
+  .how { display: grid; grid-template-columns: 1fr 1fr; gap: 16mm; }
+  .how .card { padding: 11mm 12mm 12mm; }
+  .how img { display: block; width: 100%; border-radius: 3mm; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16mm; margin-top: 16mm; }
+  .stat { border-top: 1.2mm solid var(--ink); padding-top: 5mm; }
+  .stat b { font-family: var(--display); font-size: 40mm; line-height: 1; color: var(--accent); display: block; }
+  .stat span { font-size: 11mm; color: var(--ink-soft); line-height: 1.3; }
+
+  .foot { position: absolute; left: 35mm; top: 1800mm; width: 940mm; border-top: 0.8mm solid var(--ink);
+          padding-top: 10mm; display: flex; justify-content: space-between; align-items: flex-start; }
+  .chips { display: flex; gap: 4mm; margin: 4mm 0 9mm; }
+  .chips span { font-family: var(--mono); font-size: 10mm; border: 0.6mm solid var(--ink); padding: 1.5mm 4mm; background: #fff; }
+  .who { font-size: 15mm; font-weight: 700; }
+  .who .todo { font-size: 11mm; font-weight: 500; }
+  .meta { font-size: 11mm; margin-top: 3mm; color: var(--ink-soft); }
+  .meta .todo { font-size: 10mm; }
+  .note { font-size: 10mm; color: var(--accent-dark); margin-top: 6mm; font-family: var(--mono); }
+  .qr { text-align: center; }
+  .qr .code { background: #fff; padding: 4mm; border: 0.8mm solid var(--ink); display: inline-block; }
+  .qr img { display: block; width: 120mm; height: 120mm; image-rendering: pixelated; }
+  .qr p { font-family: var(--mono); font-size: 8.5mm; color: var(--ink-soft); margin-top: 4mm; line-height: 1.4; }
+  .qr p b { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <div class="hero">
+    <div class="texture">
+      <span class="en">HOME</span><span class="ar">بيت</span><span class="en">VILLA</span><span class="ar">فيلا</span><span class="en">FLAT</span>
+      <span class="ar">شقة</span><span class="en">RENT</span><span class="ar">إيجار</span><span class="en">SALE</span><span class="ar">بيع</span>
+      <span class="en">KEY</span><span class="ar">مفتاح</span><span class="en">DEAL</span><span class="ar">عقد</span><span class="en">ROOMS</span>
+      <span class="ar">غرف</span><span class="en">CAIRO</span><span class="ar">القاهرة</span><span class="en">DOOR</span><span class="ar">أملاك</span>
+      <span class="en">HOME</span><span class="ar">بيت</span><span class="en">VILLA</span><span class="ar">فيلا</span><span class="en">FLAT</span>
+      <span class="ar">شقة</span><span class="en">RENT</span><span class="ar">إيجار</span><span class="en">SALE</span><span class="ar">بيع</span>
+    </div>
+    <div class="glow"></div>
+    <img class="mark" src="../assets/mark.svg" alt="EmlakHub mark">
+    <div class="text">
+      <div class="kicker">Real estate · Egypt</div>
+      <h1>EMLAK <span class="dot">HUB</span></h1>
+      <div class="tagline">Your next home, one click away</div>
+      <p class="promise">Search for a home to buy or rent, see every detail, and sign the contract online.</p>
+    </div>
+  </div>
+  <div class="band"></div>
+
+  <div class="body">
+    <section>
+      <h2><span class="num">01 · WHY</span>Property information is hard to reach.</h2>
+      <div class="two">
+        <div class="card">
+          <div class="label">The problem <span class="ar">المشكلة</span></div>
+          <h3>Scattered, slow property search</h3>
+          <p>Property searching is fragmented and property management is manual. Buying, selling and renting need a clear presentation of information, trust, and organized documentation.</p>
+        </div>
+        <div class="card hot">
+          <div class="label">Our solution <span class="ar">الحل</span></div>
+          <h3>One centralized online platform</h3>
+          <p>Users browse available houses and apartments and see the details quickly, in one place online. EmlakHub simplifies the process and reduces the time spent searching and managing property records.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">02 · SEE IT</span>From gallery to signed contract.<span class="ar">من المعرض إلى العقد</span></h2>
+      <div class="demo">
+        <div>
+          <div class="shot"><img src="../screenshots/contract.jpg" alt="Contract screen"></div>
+          <p class="caption">Signing for a furnished flat for rent: details filled in from the account, the blank tenant contract to download, and the signed PDF uploaded.</p>
+        </div>
+        <ul class="features">
+          <li><span class="dot"></span><div><strong>Search and filter</strong><span class="d">Sale or rent, apartment or villa, rooms, and a max price.</span></div></li>
+          <li><span class="dot"></span><div><strong>Photos and details</strong><span class="d">Up to 5 photos per home. Rent is shown per month.</span></div></li>
+          <li><span class="dot"></span><div><strong>Sign in three steps</strong><span class="d">Download the contract, sign it, upload it. Buying or renting picks the right one.</span></div></li>
+          <li><span class="dot"></span><div><strong>Follow your contract</strong><span class="d">“My contracts” shows waiting, approved or rejected.</span></div></li>
+          <li><span class="dot"></span><div><strong>The admin decides</strong><span class="d">Approving marks the home SOLD or RENTED and turns down everyone else waiting.</span></div></li>
+          <li><span class="dot"></span><div><strong>Listings that stay fresh</strong><span class="d">The admin adds, edits and deletes homes, and marks them available again.</span></div></li>
+        </ul>
+      </div>
+      <div class="thumbs">
+        <div><div class="shot"><img src="../screenshots/gallery.jpg" alt="Gallery screen"></div><p class="caption">Gallery: 50 starter homes, with search and filters.</p></div>
+        <div><div class="shot"><img src="../screenshots/my-contracts.jpg" alt="My contracts screen"></div><p class="caption">My contracts: each contract's status.</p></div>
+        <div><div class="shot"><img src="../screenshots/all-contracts.jpg" alt="All contracts screen"></div><p class="caption">All contracts: the admin approves or rejects.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span class="num">03 · HOW</span>Plain Python, plain SQL.<span class="ar">بايثون و SQL ببساطة</span></h2>
+      <div class="how">
+        <div class="card">
+          <div class="label">How a contract moves</div>
+          <img src="../diagrams/flow.png" alt="Contract flow diagram">
+        </div>
+        <div class="card">
+          <div class="label">Who sees which page</div>
+          <img src="../diagrams/page-access.png" alt="Page access by role diagram">
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>1</b><span>library to install: Streamlit</span></div>
+        <div class="stat"><b>0</b><span>classes: plain variables, ifs and loops</span></div>
+        <div class="stat"><b>17</b><span>Python files: 11 screens, 5 services, app.py</span></div>
+        <div class="stat"><b>4</b><span>SQLite tables: users, property, photos, contracts</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="foot">
+    <div>
+      <div class="label">Built with</div>
+      <div class="chips"><span>Python</span><span>Streamlit</span><span>SQLite</span></div>
+      <div class="who">Omar Hossam Hamissa · Techno Future KFS</div>
+      <div class="meta">Afro-Asian Tech Forum 2026 · Software · omarhamissa2007@gmail.com</div>
+      <div class="note">A school demo: nothing is paid, and card numbers are not checked with a bank.</div>
+    </div>
+    <div class="qr">
+      <div class="code"><img src="../assets/qr-app.svg" alt="QR code for my-new-project-emlakapp.streamlit.app"></div>
+      <p>Scan to try it<br><b>my-new-project-emlakapp.streamlit.app</b></p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

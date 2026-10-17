@@ -53,4 +53,4 @@ This code is kept simple enough for a curious 12-year-old to read top to bottom.
 
 ## Docs
 
-`docs/afro_asian_software_template.md` is the student's competition documentation (Arabic + English). `docs/tables.md` lists the tables. Keep both in step with the code when screens, tables or files change.
+`docs/` holds the competition kit: `emlakhub-documentation.md` (+ PDF), the poster, the slide deck, the diagrams and real screenshots, all in the logo's navy and gold (`docs/assets/brand.css`). Rebuild with `python docs/build.py`, which needs `playwright` and `markdown-it-py`. Those are not app dependencies, so they stay out of `requirements.txt`. Yellow ✏️ boxes are for the student to fill in. `docs/tables.md` lists the tables. Keep the docs and screenshots in step with the code when screens, tables or files change.

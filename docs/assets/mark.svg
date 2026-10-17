@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <!-- The EmlakHub mark, redrawn from logo.png: a gold "EH" in front of a city skyline and two small houses, on navy. -->
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7E6A6"/>
+      <stop offset="0.55" stop-color="#D6B778"/>
+      <stop offset="1" stop-color="#A8844D"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="148" height="148" rx="34" fill="#061730"/>
+  <g fill="none" stroke="url(#gold)" stroke-width="2.6" stroke-linejoin="round">
+    <!-- skyline -->
+    <path d="M70,104 V24 L80,18 L90,24 V104"/>
+    <path d="M90,104 V38 H106 V104"/>
+    <path d="M70,104 V44 H54 V104"/>
+    <path d="M106,104 V58 H120 V104"/>
+    <path d="M54,104 V64 H40 V104"/>
+    <path d="M80,24 V60"/>
+    <!-- two small houses -->
+    <path d="M14,118 L28,104 L42,118"/>
+    <path d="M118,118 L132,104 L146,118"/>
+    <rect x="24" y="111" width="7" height="7"/>
+    <rect x="128" y="111" width="7" height="7"/>
+    <!-- ground -->
+    <path d="M12,124 H148"/>
+  </g>
+  <!-- navy plate so the letters stand out from the skyline -->
+  <rect x="45" y="70" width="70" height="50" rx="3" fill="#061730"/>
+  <g fill="url(#gold)">
+    <!-- E -->
+    <rect x="50" y="74" width="8" height="42"/>
+    <rect x="50" y="74" width="26" height="7"/>
+    <rect x="50" y="91.5" width="21" height="7"/>
+    <rect x="50" y="109" width="26" height="7"/>
+    <!-- H -->
+    <rect x="84" y="74" width="8" height="42"/>
+    <rect x="102" y="74" width="8" height="42"/>
+    <rect x="84" y="91.5" width="26" height="7"/>
+  </g>
+</svg>

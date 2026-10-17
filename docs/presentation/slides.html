@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EmlakHub Slides</title>
+<!-- 10 slides, 1280 x 720 each. Build the PDF with: python docs/build.py slides -->
+<!-- Yellow ✏️ boxes (the "todo" class in brand.css) are for the student to write. Replace a whole box with your words. -->
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #555; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: var(--sans); color: var(--ink); }
+  .slide { position: relative; width: 1280px; height: 720px; overflow: hidden; padding: 56px 72px; break-after: page;
+           background: var(--paper);
+           background-image: linear-gradient(rgba(6,23,48,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(6,23,48,0.035) 1px, transparent 1px);
+           background-size: 32px 32px; }
+  .slide.dark { background: var(--ink); color: var(--paper); }
+  .slide.hot { background: linear-gradient(120deg, var(--ink-2), #1B3A6B); color: #fff; }
+
+  .kicker { font: 700 15px var(--mono); letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: 14px; }
+  .dark .kicker { color: var(--warm-2); }
+  .hot .kicker { color: var(--warm-2); }
+  .kicker .ar { letter-spacing: 0; margin-left: 10px; font-size: 17px; }
+  h2 { font-size: 46px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 34px; }
+  h2 .todo { font-size: 26px; font-weight: 500; letter-spacing: 0; }
+  .foot { position: absolute; left: 72px; right: 72px; bottom: 30px; display: flex; justify-content: space-between;
+          font: 500 13px var(--mono); color: var(--ink-soft); }
+  .dark .foot { color: rgba(246,243,236,0.6); }
+  .hot .foot { color: rgba(246,243,236,0.6); }
+  .foot b { font-family: var(--display); font-weight: 400; }
+
+  .texture { position: absolute; inset: 0; padding: 20px 30px; display: flex; flex-wrap: wrap; align-content: flex-start;
+             justify-content: space-between; column-gap: 26px; color: var(--accent); opacity: 0.09; }
+  .texture span { font-size: 56px; line-height: 1.45; }
+  .texture .en { font-family: var(--display); }
+  .texture .ar { font-family: var(--arabic); font-weight: 700; }
+  .glow { position: absolute; width: 560px; height: 560px; border-radius: 50%;
+          background: radial-gradient(circle, rgba(194,154,85,0.40) 0%, rgba(190,158,99,0.12) 52%, rgba(190,158,99,0) 72%); }
+  .tile { position: absolute; background: var(--paper); border-radius: 72px; padding: 22px; box-shadow: 0 0 0 7px rgba(194,154,85,0.35); }
+  .tile img { display: block; width: 100%; height: 100%; }
+
+  .title-text { position: absolute; left: 72px; top: 150px; width: 640px; }
+  .wordmark { font-family: var(--display); font-weight: 700; font-size: 80px; line-height: 1; margin: 18px 0 26px -4px; color: var(--warm-2); white-space: nowrap; }
+  .wordmark .dot { color: var(--accent); }
+  .tagline { margin-bottom: 18px; }
+  .todo { font-size: 20px; line-height: 1.5; }
+
+  .cards { display: grid; gap: 22px; }
+  .cards.three { grid-template-columns: repeat(3, 1fr); }
+  .cards.four { grid-template-columns: 1fr 1fr; }
+  .card { background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 26px 28px; min-height: 200px; }
+  .cards.three .card { min-height: 330px; }
+  .dark .card { background: var(--ink-2); border-color: rgba(246,243,236,0.12); }
+  .card h3 { font-size: 23px; font-weight: 700; margin-bottom: 10px; }
+  .card p { font-size: 18px; line-height: 1.45; color: var(--ink-soft); }
+  .dark .card p { color: rgba(246,243,236,0.75); }
+  .card .num { font: 400 15px var(--display); color: var(--accent-dark); margin-bottom: 12px; display: block; }
+
+  .steps { display: flex; align-items: center; gap: 22px; margin-top: 10px; }
+  .step { flex: 1; background: var(--paper); color: var(--ink); border-radius: 14px; padding: 26px 26px 30px; min-height: 210px; }
+  .step .n { font: 700 54px var(--display); color: var(--accent); line-height: 1; }
+  .step h3 { font-size: 27px; margin: 14px 0 8px; }
+  .step p { font-size: 18px; line-height: 1.45; color: var(--ink-soft); }
+  .steps .arrow { font: 700 40px var(--mono); color: var(--ink); }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .shot { border: 1.5px solid rgba(6,23,48,0.25); border-radius: 10px; overflow: hidden; background: #fff; }
+  .shot img { display: block; width: 100%; height: 330px; object-fit: cover; object-position: 30% top; }
+  .cap { font-size: 16px; color: var(--ink-soft); margin-top: 12px; line-height: 1.4; }
+  .dark .cap { color: rgba(246,243,236,0.75); }
+
+  .demo-big { display: grid; grid-template-columns: 380px 1fr; gap: 40px; align-items: start; }
+  .demo-big .shot img { height: 520px; object-position: 25% top; }
+  .points { list-style: none; display: grid; gap: 18px; margin-top: 8px; }
+  .points li { display: flex; gap: 14px; font-size: 19px; line-height: 1.4; }
+  .points li::before { content: ""; flex: none; width: 12px; height: 12px; margin-top: 8px; background: var(--accent); }
+  .points b { display: block; font-size: 21px; }
+  .points span { color: rgba(246,243,236,0.75); }
+
+  .diagram { background: #fff; border: 1.5px solid var(--line); border-radius: 14px; padding: 14px; }
+  .diagram img { display: block; width: 100%; }
+
+  .built { display: grid; grid-template-columns: 790px 1fr; gap: 40px; align-items: start; }
+  .stats { display: grid; gap: 20px; }
+  .stat { display: flex; gap: 18px; align-items: baseline; border-top: 2px solid var(--ink); padding-top: 10px; }
+  .stat b { font: 700 50px var(--display); color: var(--accent); min-width: 74px; }
+  .stat span { font-size: 17px; color: var(--ink-soft); line-height: 1.35; }
+  .under { font-size: 17px; color: var(--ink-soft); margin-top: 20px; }
+
+  .name-text { position: absolute; left: 560px; top: 150px; width: 620px; }
+  .name-text h2 { margin-bottom: 22px; }
+  .name-text .todo.block { font-size: 19px; }
+
+  .thanks { position: absolute; left: 72px; top: 110px; width: 700px; }
+  .thanks h1 { font-size: 92px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin-bottom: 26px; }
+  .thanks .line { margin-bottom: 10px; }
+  .qrrow { display: flex; gap: 24px; align-items: center; margin-top: 36px; }
+  .qrrow .code { background: #fff; padding: 10px; }
+  .qrrow img { display: block; width: 150px; height: 150px; image-rendering: pixelated; }
+  .qrrow p { font: 500 17px/1.6 var(--mono); }
+  .qrrow b { color: var(--warm-2); }
+  .disclaimer { margin-top: 30px; font: 500 15px var(--mono); color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- 1 · Title -->
+<section class="slide dark">
+  <div class="texture">
+    <span class="en">HOME</span><span class="ar">بيت</span><span class="en">VILLA</span><span class="ar">فيلا</span><span class="en">FLAT</span>
+    <span class="ar">شقة</span><span class="en">RENT</span><span class="ar">إيجار</span><span class="en">SALE</span><span class="ar">بيع</span>
+    <span class="en">KEY</span><span class="ar">مفتاح</span><span class="en">DEAL</span><span class="ar">عقد</span><span class="en">ROOMS</span>
+    <span class="ar">غرف</span><span class="en">CAIRO</span><span class="ar">أملاك</span>
+  </div>
+  <div class="glow" style="right: 20px; top: 70px;"></div>
+  <div class="tile" style="left: 830px; top: 170px; width: 360px; height: 360px;"><img src="../assets/mark.svg" alt="EmlakHub mark"></div>
+  <div class="title-text">
+    <div class="kicker">Real estate · Egypt</div>
+    <div class="wordmark">EMLAK <span class="dot">HUB</span></div>
+    <div class="tagline" style="font: 700 30px var(--display); color: var(--accent);">Your next home, one click away</div>
+    <div style="font-size: 21px; line-height: 1.45; color: var(--paper);">Search for a home to buy or rent, see every detail, and sign the contract online.</div>
+  </div>
+  <div class="foot"><span><b>EmlakHub</b> · Afro-Asian Tech Forum 2026</span><span>1</span></div>
+</section>
+
+<!-- 2 · The problem -->
+<section class="slide">
+  <div class="kicker">01 · The problem <span class="ar">المشكلة</span></div>
+  <h2>Property information is hard to reach.</h2>
+  <div class="cards three">
+    <div class="card"><h3>Hard to find</h3><p>Getting property information in an organized, fast way is difficult.</p></div>
+    <div class="card"><h3>Slow to follow up</h3><p>After finding a home, the client still has to read the details and follow steps like the contract.</p></div>
+    <div class="card"><h3>Hard to show a home</h3><p>Owners need a platform to present their property easily, without complications.</p></div>
+  </div>
+  <div class="foot"><span><b>EmlakHub</b> · Homes for sale and rent</span><span>2</span></div>
+</section>
+
+<!-- 3 · Who it's for -->
+<section class="slide dark">
+  <div class="kicker">Who it's for <span class="ar">لمن هذا التطبيق</span></div>
+  <h2>For home seekers and home owners.</h2>
+  <div class="cards four">
+    <div class="card"><span class="num">01</span><h3>Buyers, renters and home seekers</h3><p>Homes for sale or rent, with full details: price, address, rooms and area.</p></div>
+    <div class="card"><span class="num">02</span><h3>Property owners and landlords</h3><p>A simple way to publish their properties.</p></div>
+    <div class="card"><span class="num">03</span><h3>Real-estate agents</h3><p>A digital tool to manage listings and contracts.</p></div>
+    <div class="card"><span class="num">04</span><h3>Students exploring digital property tools</h3><p>A practical example of digital transformation in real estate.</p></div>
+  </div>
+  <div class="foot"><span><b>EmlakHub</b> · Homes for sale and rent</span><span>3</span></div>
+</section>
+
+<!-- 4 · Our solution -->
+<section class="slide hot">
+  <div class="kicker">Our solution <span class="ar">الحل</span></div>
+  <h2>Find. Sign. Get the keys.</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Find</h3><p>Search and filter the gallery, then open a home to see its photos and price.</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">2</div><h3>Sign</h3><p>Download the ownership or tenant contract, sign it, and upload the PDF.</p></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">3</div><h3>Approved</h3><p>The admin says yes, and the home is marked SOLD or RENTED.</p></div>
+  </div>
+  <div class="foot"><span><b>EmlakHub</b> · Homes for sale and rent</span><span>4</span></div>
+</section>
+
+<!-- 5 · Demo: browse -->
+<section class="slide">
+  <div class="kicker">02 · Demo <span class="ar">عرض</span></div>
+  <h2>Find a home.</h2>
+  <div class="pair">
+    <div><div class="shot"><img src="../screenshots/gallery-filters.jpg" alt="Gallery with filters"></div><p class="cap">Gallery: villas for sale in Sheikh Zayed, with the search box and four filters.</p></div>
+    <div><div class="shot"><img src="../screenshots/details.jpg" alt="Property details screen"></div><p class="cap">Details: a furnished flat for rent, its photos, and the price per month.</p></div>
+  </div>
+  <div class="foot"><span><b>EmlakHub</b> · Homes for sale and rent</span><span>5</span></div>
+</section>
+
+<!-- 6 · Demo: sign -->
+<section class="slide dark">
+  <div class="demo-big">
+    <div>
+      <div class="kicker">02 · Demo <span class="ar">عرض</span></div>
+      <h2>Sign on one page.</h2>
+      <ul class="points">
+        <li><div><b>Your details, filled in</b><span>Name, phone and email come from your account.</span></div></li>
+        <li><div><b>The right contract</b><span>For sale: ownership. For rent: tenant.</span></div></li>
+        <li><div><b>Sign and upload</b><span>One PDF, up to 5 MB, saved under the contract's number.</span></div></li>
+        <li><div><b>One at a time</b><span>While you wait for an answer, you can't sign for the same home again.</span></div></li>
+      </ul>
+    </div>
+    <div class="shot"><img src="../screenshots/contract.jpg" alt="Contract screen"></div>
+  </div>
+  <div class="foot"><span><b>EmlakHub</b> · Homes for sale and rent</span><span>6</span></div>
+</section>
+
+<!-- 7 · Demo: the answer -->
+<section class="slide">
+  <div class="kicker">02 · Demo <span class="ar">عرض</span></div>
+  <h2>Wait for the answer.</h2>
+  <div class="pair">
+    <div><div class="shot"><img src="../screenshots/my-contracts.jpg" alt="My contracts screen"></div><p class="cap">My contracts: one waiting, one approved.</p></div>
+    <div><div class="shot"><img src="../screenshots/all-contracts.jpg" alt="All contracts screen"></div><p class="cap">All contracts: the admin sees who is waiting and presses Approve or Reject.</p></div>
+  </div>
+  <div class="foot"><span><b>EmlakHub</b> · Homes for sale and rent</span><span>7</span></div>
+</section>
+
+<!-- 8 · How it works -->
+<section class="slide">
+  <div class="kicker">03 · How it works <span class="ar">كيف يعمل</span></div>
+  <h2 style="margin-bottom: 20px;">One yes, and the home is taken.</h2>
+  <div class="built" style="grid-template-columns: 820px 1fr;">
+    <div class="diagram"><img src="../diagrams/flow.png" alt="Contract flow diagram"></div>
+    <div class="stats">
+      <div class="stat"><b>3</b><span>contract steps: pending, approved, rejected</span></div>
+      <div class="stat"><b>1</b><span>approval turns down everyone else waiting for that home</span></div>
+      <div class="stat"><b>5</b><span>photos per home at most, 5 MB each</span></div>
+    </div>
+  </div>
+  <div class="foot"><span><b>EmlakHub</b> · Homes for sale and rent</span><span>8</span></div>
+</section>
+
+<!-- 9 · How it's built -->
+<section class="slide">
+  <div class="kicker">03 · How it's built <span class="ar">كيف بُني</span></div>
+  <h2 style="margin-bottom: 14px;">Built so a beginner can read every line.</h2>
+  <div class="built">
+    <div class="diagram"><img src="../diagrams/page-access.png" alt="Page access by role"></div>
+    <div class="stats">
+      <div class="stat"><b>1</b><span>library to install: Streamlit</span></div>
+      <div class="stat"><b>0</b><span>classes: plain variables, ifs and loops</span></div>
+      <div class="stat"><b>17</b><span>Python files: 11 screens, 5 services, app.py</span></div>
+      <div class="stat"><b>4</b><span>SQLite tables: users, property, photos, contracts</span></div>
+    </div>
+  </div>
+  <p class="under" style="margin-top: 10px;">Python + Streamlit for the website · SQLite for users, homes, photos and contracts · one small services file per topic.</p>
+  <div class="foot"><span><b>EmlakHub</b> · Homes for sale and rent</span><span>9</span></div>
+</section>
+
+<!-- 10 · Thank you -->
+<section class="slide dark">
+  <div class="glow" style="right: 20px; top: 70px;"></div>
+  <div class="tile" style="left: 860px; top: 190px; width: 320px; height: 320px;"><img src="../assets/mark.svg" alt="EmlakHub mark"></div>
+  <div class="thanks">
+    <h1>Thank you.</h1>
+    <div class="line">Omar Hossam Hamissa · Techno Future KFS</div>
+    <div class="line">Afro-Asian Tech Forum 2026 · omarhamissa2007@gmail.com</div>
+    <div class="qrrow">
+      <div class="code"><img src="../assets/qr-app.svg" alt="QR code for my-new-project-emlakapp.streamlit.app"></div>
+      <p>Scan to try the live app:<br><b>my-new-project-emlakapp.streamlit.app</b></p>
+    </div>
+    <p class="disclaimer">A school demo: nothing is paid, and card numbers are not checked with a bank.</p>
+  </div>
+  <div class="foot"><span><b>EmlakHub</b> · Homes for sale and rent</span><span>10</span></div>
+</section>
+
+</body>
+</html>
