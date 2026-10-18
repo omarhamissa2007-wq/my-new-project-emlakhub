@@ -1,6 +1,8 @@
 # EmlakHub: Homes for Sale and Rent
 
-Software project documentation · Afro-Asian Tech Forum 2026 · Software category
+Software project documentation · AFFIAT · Afro-Asian Forum for Innovation and Technology · Aswan Finals 2026 · Software category
+
+<p align="center"><img src="assets/partners.png" alt="AFFIAT and Techno Future Kafr El Sheikh" width="320"></p>
 
 <p align="center"><img src="assets/logo.png" alt="EmlakHub logo" width="460"></p>
 
@@ -334,4 +336,4 @@ Through building this project, a student can practice:
 
 ---
 
-Omar Hossam Hamissa · Techno Future KFS · Afro-Asian Tech Forum · Software category · 2026
+Omar Hossam Hamissa · Techno Future KFS · AFFIAT · Afro-Asian Forum for Innovation and Technology · Aswan Finals 2026 · Software category
